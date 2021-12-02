@@ -3,9 +3,11 @@ import { useParams } from 'react-router-dom'
 import dishes from '../data/menu.json'
 import DishComments from './DishComments'
 import { Col, Row, Container } from 'react-bootstrap'
+import Pasta from '../interfaces/pasta'
+
 
 const Details = () => {
-  const [pasta, setPasta] = useState(undefined)
+  const [pasta, setPasta] = useState<Pasta | undefined>(undefined)
 
   const params = useParams()
 
@@ -26,7 +28,7 @@ const Details = () => {
               <h3>Pasta Details</h3>
               <img src={pasta.image} alt='detail pic' className='my-3' />
               <p>{pasta.description}</p>
-              <DishComments selectedDish={pasta} />
+              <DishComments pasta={pasta} />
             </>
           ) : (
             <h2>404 - Pasta not found</h2>
