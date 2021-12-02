@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import { useState, FormEvent } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Reservation from '../interfaces/reservation'
 
 const ReservationForm = () => {
-  const [reservation, setReservation] = useState({
+  const [reservation, setReservation] = useState<Reservation>({
     name: '',
     phone: '',
     numberOfPeople: 1,
@@ -13,14 +13,14 @@ const ReservationForm = () => {
     specialRequests: '',
   })
 
-  const handleInput = (fieldName, value) => {
+  const handleInput = (fieldName: string, value: string|number|boolean) => {
     setReservation({
       ...reservation,
       [fieldName]: value,
     })
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     console.log(reservation)
     try {
