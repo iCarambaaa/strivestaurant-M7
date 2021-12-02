@@ -13,7 +13,10 @@ const ReservationForm = () => {
     specialRequests: '',
   })
 
-  const handleInput = (fieldName: string, value: string|number|boolean) => {
+  type TValue = typeof reservation[keyof Reservation]
+
+  const handleInput = (fieldName: string, value: TValue) => {
+    // (fieldName: string, value: string|number|boolean)
     setReservation({
       ...reservation,
       [fieldName]: value,
